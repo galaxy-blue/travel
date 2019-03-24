@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽的作用域</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <!-- 插槽作用域的模板 -->
+            <template slot-scope="arrs">
+                <h1>{{arrs.arr}}</h1>
+            </template>
+        </child>
+    </div>
+    <script>
+        /* 
+        作用域插槽的使用条件：
+        当子组件有一组数据循环的时候，数据怎样使用想通过父组件的形式来使用，这样的情况可以用作用域插槽
+         */
+         Vue.component('child',{
+             template:`<div>
+                        <ul>
+                        <slot v-for="(arr,index) in arrs" :arr=arr></slot>
+                        </ul>
+                       </div>`,
+             data(){
+                 return {
+                     arrs:[1,2,3,4]
+                 }
+             }
+         })
+        var vm = new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>

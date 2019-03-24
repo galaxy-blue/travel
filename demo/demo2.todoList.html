@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>to do list</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="val">
+        <button @click="submit">提交</button>
+        <ul>
+            <li v-for="arr in arrs">{{arr}}</li>
+        </ul>
+    </div>
+    <script>
+        /* vue 的思想：
+        获取到input内的值，把它放到li的数组的最后(操作的直接是数据)
+        */
+       var app=new Vue({
+           el:'#app',
+           data:{
+               val:'',
+               arrs:[]
+           },
+           methods:{
+               submit:function(){
+                   this.arrs.push(this.val);
+                   this.val='';
+               }
+           }
+       })
+    </script>
+
+</body>
+</html>

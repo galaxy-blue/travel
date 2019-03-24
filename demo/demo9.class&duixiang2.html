@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的外联样式</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .isRed{
+            color:#f00;
+        }
+        .isBig{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div @click="change" :class="classObject">点击一次改变样式</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                isRed:true,
+                isBig:true
+            },
+            methods:{
+                change(){
+                    this.isRed=!this.isRed
+                    this.isBig=!this.isBig;
+                }
+            },
+            computed:{
+                classObject(){
+                    return this.isRed=this.isRed
+                           this.isBig=this.isBig;
+            }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中的插槽(slot)</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <p slot="header">header</p>
+            <p slot="footer">footer</p>  <!-- 这是具名插槽 -->
+        </child>
+    </div>
+    <script>
+        Vue.component('child',{
+            //template后是一个字符串模板
+            //slot可以向子组件传递dom元素
+            //插槽只有一个，但具名插槽可以通过name设置多个
+            //slot可以在slot标签里设置默认内容
+            template:`<div>
+                        <slot name="header">可以在这里设置默认内容</slot>
+                        hello world
+                        <slot name="footer"></slot>
+                    </div>`,
+        })
+        var vm = new Vue({
+            el:'#app',
+
+        })
+    </script>
+</body>
+</html>

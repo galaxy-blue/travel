@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内联样式的对象/数组绑定</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div :style='styleObj' @click="change">改变样式</div><!-- style后边有效的是对象形式 -->
+       <!--  <div :style=[styleObj,{fontSize:'40px'}] @click="change">改变样式</div> -->  <!-- 用数组形式绑定的时候，也只认对象形式，后边还可以跟对象 -->
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                styleObj:{
+                    color:'#f00'
+                }
+            },
+            methods:{
+                change(){
+                    this.styleObj.color=this.styleObj.color=='#f00' ? '#000' : '#f00';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

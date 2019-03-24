@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>条件渲染</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-if='show'>{{message}}</div>
+        <div v-else-if=false>heheh</div>
+        <div v-else>bye world</div>
+        <!-- <div v-show="show">{{message}}</div> -->
+    </div>
+    <script>
+        /*
+         v-if v-show的区别
+         v-if是动态的向DOM树内添加或者删除DOM元素；
+         v-show是通过设置DOM元素的display样式属性控制显隐；
+         v-if可以和v-else-if  v-else连用,,v-if v-else-if上必须有条件
+         */
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                show:false,
+                message:'hello world'
+            }
+        })
+    </script>
+</body>
+</html>

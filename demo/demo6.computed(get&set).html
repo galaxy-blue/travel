@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>get/set</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{fullName}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'tian',
+                lastName: 'Lei'
+            },
+            computed: {
+                /* fullName:function(){
+                    return this.firstName+' '+this.lastName;
+                } */
+                fullName: {
+                    get: function () {
+                        console.log(111);
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    set: function (value) { //在改变fullname值的时候才执行set
+                        var arr = value.split(' ');
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                        
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

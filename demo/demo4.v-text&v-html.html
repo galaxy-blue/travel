@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板语法</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{del+' hah'}}</div>
+        <div v-text='del+" hahah"'></div> <!-- v-text='' ''里边的内容是变量而不是字符串 -->
+        <div v-html='del'></div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                del:'del'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表渲染</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+<ul @click="setArr">
+            <!-- <li v-for='(i,index) in list' :key="i.id" @click="setArr">{{i.text}}</li> --> <!-- :key值绑定是id的话比绑定index的性能高 -->
+           <template v-for="(item,index) in list" >
+               <div>{{item.text}}</div>
+               <span>{{item.id}}</span>
+           </template>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {id:101,text:'I'},
+                    {id:102,text:'Love'},
+                    {id:103,text:'You'}
+                ]
+            },
+            /* 
+            改变数组的时候用下标的形式来改变的话，页面上的数组不会跟着改变，在vue中用数组变异的方法来改变数组，有：
+            pop push shift unshift splice  sort reverse
+            还可以通过新的引用来改变数组，如让this.list等于一个新的数组
+            this.list=[{
+                ...
+            }]
+            还有Vue.set()
+             */
+             /* 
+             对象的循环
+             <div v-for="(item,key,index) in items">{{item}}</div>
+             改变对象元素的方法可以通过新的引用可以通过set的方法 
+              */
+            methods:{
+                setArr(){
+                    // set(this.list,'id',107);
+var itemLen=this.list.length;
+Vue.set(this.list,itemLen,{message:"Test add attr",id:itemLen});
+                console.log(this.list, '111');
+                   // this.list.push({id: ++this.list[this.list.length - 1].id,text:'haha'});
+                   // console.log(this.list, 'hhaha');
+                    // console.log(this.list.splice(3));
+                    //this.list[3]={id:104,text:'hrh'};
+                    
+                    // this.list.push({
+                    //     id: ++this.list[this.list.length - 1].id,
+                    //     text: 'haha'
+                    // });
+                    // console.log(++this.list[this.list.length - 1].id, this.list, 'hahaha');
+                    // let tq = this.list[this.list.length - 1].id;
+                    // this.list.push({
+                    //     id: ++tq,
+                    //     text: 'hehe'
+                    // });
+                    // console.log(++tq, this.list, 'hahaha');
+
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

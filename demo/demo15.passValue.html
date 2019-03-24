@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件间的传值</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        父组件向子组件通过自定义属性的方式来传值
+        父组件向子组件传值有单项数据流的说法，
+        父组件向子组件传的值在子组件中不能改变，但可以通过重新赋值的形式来改变
+     -->
+    <div id="app">
+        <div>
+            <counter :count="val"></counter>
+        </div>
+    </div>
+    <script>
+        var counter={   //局部组件
+            template:'<div>{{count}}</div>',
+            props:['count'],
+            data(){
+                return {
+                    count2:this.count
+                }
+            }
+        }
+        var vm = new Vue({
+            el:'#app',
+            components:{
+                counter:counter
+            },
+            data:{
+                val:2
+            }
+        })
+    </script>
+</body>
+</html>

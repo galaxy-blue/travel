@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ref 获取dom元素</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter ref="one" @change="changeCount"></counter>
+        <counter ref="two" @change="changeCount"></counter>
+        <div>{{tatol}}</div>
+    </div>
+    <script>
+        Vue.component('counter',{
+            template:'<div @click="handle">{{count}}</div>',
+            data(){
+                return {
+                    count:0
+                }
+            },
+            methods:{
+                handle(){
+                    this.count++;
+                    this.$emit('change');
+                }
+            }
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                tatol:0
+            },
+            methods:{
+                changeCount(){
+                   this.tatol=this.$refs.one.count+this.$refs.two.count;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

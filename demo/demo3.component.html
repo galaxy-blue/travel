@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+     <div id="app">
+        <input type="text" v-model="val">
+        <button @click="submit">提交</button>
+        <ul>
+            <todo-list v-for="(arr, index) in arrs" :key="index" :content="arr" :ind="index" v-on:handle="shijian"></todo-list><!-- shijian后边不需要传参 -->
+            <!-- 父组件向子组件传值用属性传值 -->
+        </ul>
+    </div>
+    <script>
+        /* Vue.component('TodoList',{   //全局组件
+            props:['content'], //这里接受父组件传过来的数据
+            template:'<li>{{content}}</li>',
+        }) */
+       var TodoList={  //局部组件
+           props:['content','ind'],
+           template:'<li @click="haha(ind)">{{content}}</li>',
+           methods:{
+            //    handleList (ind) {
+            //        console.log(ind);
+            //    }
+            haha:function(ind){
+                // console.log(ind);
+                this.$emit('handle',ind)
+            }
+           }
+       }
+       var app=new Vue({
+           el:'#app',
+           data:{
+               val:'',
+               arrs:[]
+           },
+           methods:{
+               submit:function(){
+                   this.arrs.push(this.val);
+                   this.val='';
+               },
+               shijian:function(ind){
+                  this.arrs.splice(ind,1);
+                  // console.log(ind);
+               }
+           },
+           components:{//在vue里注册局部组件
+               TodoList:TodoList
+           }
+       })
+    </script>
+</body>
+</html>

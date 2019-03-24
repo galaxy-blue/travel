@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性 侦听器</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{fullName()}}</div><!-- 如果fullName是方法必须加括号吗，，在{{}}里的需要加()吗 -->
+        <div>{{age}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'tian',
+                lastName:'Lei',
+               /*  fullName:'tian Lei', */ //watch使用
+                age:'23'
+            },
+            //计算属性 (能缓存数据,避免代码冗余),Dom找数据(插值表达式)的时候先在data里边找，找不到的时候会在computed里边找
+            /* computed:{
+                fullName:function(){
+                    console.log('计算了一次');
+                    return this.firstName +' '+ this.lastName;
+                }
+            } */
+            //侦听器(只是具有侦听功能,侦听的是变量,侦听的变量改变的时候才触发改变)
+            /* watch:{
+                firstName:function(){
+                   this.fullName=this.firstName+this.lastName;
+                   console.log('计算了一次');
+                },
+                lastName:function(){
+                    this.fullName=this.firstName+this.lastName;
+                    console.log('计算了一次');
+                }
+            } */
+            //方法
+            methods:{
+                fullName:function(){
+                    console.log('改变了一次');
+                    return this.firstName+this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
