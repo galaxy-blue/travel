@@ -10,7 +10,7 @@
 <body>
     <div id="app">
         <div>{{del+' hah'}}</div>
-        <div v-text='del+" hahah"'></div> <!-- v-text='' ''里边的内容是变量而不是字符串 -->
+        <div v-text='del+" hahah"'></div> <!-- v-text  v-html  v-bind等v-指令后的''和{{}}的作用是一样的，都能放简单的js表达式 -->
         <div v-html='del'></div>
     </div>
     <script>

@@ -23,7 +23,7 @@
             },
             //计算属性 (能缓存数据,避免代码冗余),Dom找数据(插值表达式)的时候先在data里边找，找不到的时候会在computed里边找
             /* computed:{
-                fullName:function(){
+                fullName(){
                     console.log('计算了一次');
                     return this.firstName +' '+ this.lastName;
                 }
@@ -41,7 +41,7 @@
             } */
             //方法
             methods:{
-                fullName:function(){
+                fullName:function(){   //调用？
                     console.log('改变了一次');
                     return this.firstName+this.lastName;
                 }

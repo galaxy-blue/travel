@@ -13,7 +13,7 @@
         <button @click="submit">提交</button>
         <ul>
             <todo-list v-for="(arr, index) in arrs" :key="index" :content="arr" :ind="index" v-on:handle="shijian"></todo-list><!-- shijian后边不需要传参 -->
-            <!-- 父组件向子组件传值用属性传值 -->
+            <!-- 父组件向子组件传值用属性传组值 -->
         </ul>
     </div>
     <script>

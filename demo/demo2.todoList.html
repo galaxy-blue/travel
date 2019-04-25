@@ -9,8 +9,8 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="val">
-        <button @click="submit">提交</button>
+        <input type="text" v-model="val">    <!-- v-model是双向数据绑定-->
+        <button v-on:click="submit">提交</button>
         <ul>
             <li v-for="arr in arrs">{{arr}}</li>
         </ul>
