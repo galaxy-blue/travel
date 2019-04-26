@@ -39,6 +39,7 @@ export default {
   margin-left: 0.1rem;
   color:#ccc;
   padding-left: 0.2rem;
+  border-radius: 0.05rem;
 }
 .city{
   color:#fff;
