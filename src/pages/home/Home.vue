@@ -1,5 +1,8 @@
 <template>
-<div> home </div>
+<div id="home">
+  <div class="home">home</div>
+  
+</div>
 </template>
 
 <script>
@@ -9,7 +12,7 @@ export default {
     return{
 
     }
-}
+},
 }
 </script>
 

@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path:'/',
-      name:'Home',
-      component:'Home'
+      name:'Home', //组件名是字符串
+      component:Home  //上边引进来的组件，不是字符串
     }
   ]
 })
