@@ -6,6 +6,7 @@ import router from './router'
 import './assets/styles/border.css'
 import './assets/styles/reset.css'     /* css的内容在这里引入 */
 import fastClick from 'fastclick'   /* 在package.json里下载的包 */
+import './assets/styles/iconfont.css'  /* 全局的css在main.js里引入 */
 
 
 Vue.config.productionTip = false

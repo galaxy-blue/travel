@@ -1,18 +1,17 @@
 <template>
 <div id="home">
-  <div class="home">home</div>
-  
+  <home-header></home-header>
 </div>
 </template>
 
 <script>
+import HomeHeader from './components/Header'  //局部组件
 export default {
   name:'Home',
-  data(){
-    return{
+  components:{
+    HomeHeader
+  }
 
-    }
-},
 }
 </script>
 
